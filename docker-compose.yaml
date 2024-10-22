@@ -1,0 +1,20 @@
+version: '3.8'
+services:
+  mongodb:
+    image: mongo:6-jammy
+    container_name: mongo6-jammy
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: admin
+      MONGO_INITDB_ROOT_PASSWORD: root
+      MONGO_INITDB_DATABASE: test
+    ports:
+      - "27017:27017"
+    volumes:
+      - /tmp/mongo-data:/data/db
+    restart: always
+
+volumes:
+  mongo-data:
+
+
+docker exec -it mongo6-jammy mongosh -u admin -p 
