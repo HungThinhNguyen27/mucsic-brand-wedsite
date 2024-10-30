@@ -1,0 +1,28 @@
+version: '3.8'
+services:
+
+  flask_app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    command: python -u app.py
+    ports:
+      - "5030:5000"  
+    volumes:
+      - .:/app
+    links:
+      - mongodb
+
+  mongodb:
+    image: mongo:6-jammy
+    hostname: mongodb
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: thinh
+      MONGO_INITDB_ROOT_PASSWORD: thinh123
+    ports:
+      - 27017:27017    
+    volumes:
+      - /tmp/mongo-data:/data/db
+
+# docker exec -it songs-service-mongodb-1 mongosh -u thinh -p thinh123  --authenticationDatabase admin
+
