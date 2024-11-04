@@ -1,0 +1,26 @@
+.lyrics-container {
+    background-color: #121212;
+    /* Màu nền giống Spotify */
+    color: #ee2e2e;
+    /* Màu chữ trắng */
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+}
+
+.song-title {
+    font-size: 2em;
+    margin-bottom: 10px;
+}
+
+.artist-name {
+    font-size: 1.5em;
+    margin-bottom: 20px;
+}
+
+.lyrics {
+    font-size: 1.2em;
+    line-height: 1.6;
+    white-space: pre-wrap;
+    /* Để giữ nguyên định dạng lời bài hát */
+}

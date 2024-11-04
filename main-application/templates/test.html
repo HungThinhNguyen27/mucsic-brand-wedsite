@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% load static %} <!-- Đảm bảo dòng này nằm ở đầu file -->
+
+{% block head_content %}
+<link rel="stylesheet" href="{% static 'assets/css/lyrics.css' %}" />
+{% endblock %}
+
+{% block content %}
+<div class="lyrics-container">
+    <h2 class="song-title">Cơn mưa ngang qua</h2>
+    <h3 class="artist-name">Sơn Tùng MTP</h3>
+    <div class="lyrics">
+        <p>
+            Cơn mưa ngang qua, làm ướt mái tóc em, khiến tim anh bồi hồi.
+            <br>
+            Ngày hôm nay, anh chỉ muốn bên em, cùng nhau đi dưới mưa.
+        </p>
+    </div>
+</div>
+{% endblock %}
+
+{% block js_script %}
+<script>
+    // Thêm JavaScript nếu cần thiết
+</script>
+{% endblock %}

@@ -1,20 +1,64 @@
 version: '3.8'
 services:
+
+  main-application-container:
+    build:
+      context: ./main-application
+      dockerfile: Dockerfile
+    container_name: main-application-container
+    ports:
+      - "8080:8000"  
+    volumes:
+      - ./main-application:/app
+    networks:
+      - music-band-network
+
+  pictures-service-container:
+    build:
+      context: ./pictures-service
+      dockerfile: Dockerfile
+    container_name: pictures-service-container
+    ports:
+      - "5010:3000"  
+    volumes:
+      - ./pictures-service:/app
+    networks:
+      - music-band-network
+
+  songs-service-container:
+    build:
+      context: ./songs-service
+      dockerfile: Dockerfile
+    command: python -u app.py
+    container_name: songs-service-container
+    ports:
+      - "5030:5000"  
+    volumes:
+      - ./songs-service:/app  
+    links:
+      - mongodb
+    depends_on:
+      - mongodb
+    networks:
+      - music-band-network
+
   mongodb:
     image: mongo:6-jammy
-    container_name: mongo6-jammy
+    hostname: mongodb
+    container_name: mongodb-container
     environment:
-      MONGO_INITDB_ROOT_USERNAME: admin
-      MONGO_INITDB_ROOT_PASSWORD: root
-      MONGO_INITDB_DATABASE: test
+      MONGO_INITDB_ROOT_USERNAME: thinh
+      MONGO_INITDB_ROOT_PASSWORD: thinh123
     ports:
-      - "27017:27017"
+      - 27017:27017    
     volumes:
-      - /tmp/mongo-data:/data/db
-    restart: always
+      - .mongo-data-docker:/data/db
+    networks:
+      - music-band-network
 
-volumes:
-  mongo-data:
+networks:
+  music-band-network:
+    driver: bridge
 
+# docker exec -it songs-service-mongodb-1 mongosh -u thinh -p thinh123  --authenticationDatabase admin
 
-docker exec -it mongo6-jammy mongosh -u admin -p 

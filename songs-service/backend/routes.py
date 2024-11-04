@@ -21,8 +21,8 @@ def connect_mongo():
         client = MongoClient(
             host='mongodb',
             port=27017,
-            username='root',
-            password='root123',
+            username='thinh',
+            password='thinh123',
             authSource="admin"
         )
         db_client = client["test-connection"]

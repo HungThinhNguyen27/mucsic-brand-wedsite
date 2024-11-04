@@ -20,3 +20,6 @@ ENV PORT 3000
 EXPOSE 3000
 
 CMD ["flask", "run", "--host=0.0.0.0", "--port=3000"]
+
+# docker build -t my_pictures_services:latest .                                           
+# docker run -d --name pictures-services-server-2 -p 5010:3000 my_pictures_services:latest
