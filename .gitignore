@@ -1,2 +1,3 @@
 .DS_Store
-..mongo-data-docker
+.mongo-data-docker/
+env/
